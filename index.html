@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f1">
+  <title>A little note for Vlair Ashlee</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #493a50;
+      --muted: #766b7b;
+      --rose: #c85e7b;
+      --cream: #fff8f1;
+      --lavender: #eee9fa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 28px 18px 42px;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 10%, #f9e3e9 0, transparent 34%),
+        radial-gradient(ellipse at 88% 90%, #e7e1f6 0, transparent 38%),
+        var(--cream);
+      font-family: ui-rounded, "Avenir Next", "Segoe UI", sans-serif;
+    }
+    .sparkle {
+      position: fixed;
+      z-index: 0;
+      color: #d790a6;
+      opacity: .55;
+      animation: float 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .s1 { left: 12%; top: 18%; font-size: 22px; }
+    .s2 { right: 13%; top: 25%; font-size: 16px; animation-delay: -2s; }
+    .s3 { left: 19%; bottom: 18%; font-size: 14px; animation-delay: -4s; }
+    .s4 { right: 18%; bottom: 14%; font-size: 24px; animation-delay: -1s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-12px) rotate(8deg); }
+    }
+    .side-gallery {
+      position: fixed;
+      top: 17vh;
+      width: min(18vw, 190px);
+      height: min(66vh, 560px);
+      min-height: 430px;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .side-gallery-left { left: max(16px, calc(50% - 450px)); }
+    .side-gallery-right { right: max(16px, calc(50% - 450px)); }
+    .side-photo {
+      position: absolute;
+      margin: 0;
+      padding: 5px;
+      overflow: hidden;
+      border: 1px solid rgba(90, 62, 80, .12);
+      border-radius: 13px;
+      background: white;
+      box-shadow: 0 10px 22px rgba(60, 40, 58, .22);
+    }
+    .side-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .side-bunny {
+      top: 0;
+      left: 0;
+      width: 94%;
+      height: 165px;
+      transform: rotate(-7deg);
+    }
+    .side-anime {
+      top: 35%;
+      left: 12%;
+      width: 86%;
+      height: 150px;
+      transform: rotate(5deg);
+    }
+    .side-manga {
+      top: 69%;
+      left: 2%;
+      width: 88%;
+      height: 160px;
+      transform: rotate(-4deg);
+    }
+    .side-manga img { object-fit: contain; background: #f95a3d; }
+    .side-pointing {
+      top: 19%;
+      left: 6%;
+      width: 92%;
+      height: 122px;
+      transform: rotate(5deg);
+      z-index: 4;
+    }
+    .side-clown {
+      top: 48%;
+      left: 0;
+      width: 86%;
+      height: 112px;
+      transform: rotate(-6deg);
+      z-index: 5;
+    }
+.side-rocket {
+      top: 52%;
+      right: 4%;
+      width: 92%;
+      height: 132px;
+      transform: rotate(-7deg);
+      z-index: 6;
+    }    .side-portrait {
+      top: 2%;
+      right: 0;
+      width: 94%;
+      height: 140px;
+      transform: rotate(6deg);
+    }
+    .side-dragon {
+      top: 34%;
+      right: 6%;
+      width: 88%;
+      height: 170px;
+      transform: rotate(-5deg);
+    }
+    .side-shrek {
+      top: 70%;
+      right: 0;
+      width: 88%;
+      height: 150px;
+      transform: rotate(4deg);
+    }    main {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 500px);
+      text-align: center;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--rose);
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+    .card, .gallery-wrap {
+      border: 1px solid rgba(200, 94, 123, .16);
+      background: rgba(255, 255, 255, .82);
+      backdrop-filter: blur(8px);
+    }
+    .card {
+      padding: clamp(24px, 7vw, 38px);
+      border-radius: 28px;
+      box-shadow: 0 18px 60px rgba(92, 61, 83, .12);
+    }
+    .heart {
+      display: inline-grid;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 12px;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff0f3;
+      color: var(--rose);
+      font-size: 25px;
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      8% { transform: scale(1.1); }
+      16% { transform: scale(1); }
+      24% { transform: scale(1.07); }
+      32% { transform: scale(1); }
+    }
+    .intro {
+      max-width: 34ch;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 21px;
+      color: white;
+      background: var(--rose);
+      box-shadow: 0 7px 18px rgba(200, 94, 123, .22);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(200, 94, 123, .28);
+      background: #b94f6d;
+    }
+    button:focus-visible { outline: 3px solid #8d4260; outline-offset: 4px; }
+    .read-button { background: #977da5; }
+    .note {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: max-height .55s ease, opacity .4s ease, transform .4s ease;
+    }
+    .note.open { max-height: 900px; opacity: 1; transform: translateY(0); }
+    .note-inner {
+      margin-top: 24px;
+      padding: 20px 18px;
+      border-radius: 18px;
+      background: #fff8fb;
+      text-align: left;
+    }
+    .note-inner p {
+      margin: 0 0 13px;
+      color: #5e5263;
+      line-height: 1.7;
+    }
+    .note-inner p:last-child { margin-bottom: 0; }
+    .signoff {
+      color: var(--rose) !important;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+    .forgive {
+      margin-top: 18px;
+      padding: 20px 16px 18px;
+      border: 1px dashed rgba(200, 94, 123, .35);
+      border-radius: 22px;
+      background: linear-gradient(135deg, #fff2f5, #f3efff);
+    }
+    .forgive h2 {
+      margin: 0 0 15px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 5vw, 1.7rem);
+      font-weight: 500;
+    }
+    .choices {
+      position: relative;
+      height: 156px;
+      margin: 0 auto;
+    }
+    .yes-button, .no-button {
+      position: absolute;
+      top: 12px;
+    }
+    .yes-button {
+      left: calc(50% - 112px);
+      background: #e083a0;
+    }
+    .no-button {
+      --shrink: 1;
+      left: calc(50% + 14px);
+      background: #96839e;
+      transform: scale(var(--shrink));
+    }
+    .no-button:hover {
+      transform: scale(var(--shrink)) translateY(-2px);
+      background: #796581;
+    }
+    .no-button.wiggle { animation: wiggle .34s ease-in-out 2; }
+    @keyframes wiggle {
+      0%, 100% { rotate: 0deg; }
+      25% { rotate: -12deg; }
+      75% { rotate: 12deg; }
+    }
+    .response {
+      min-height: 1.5em;
+      margin: 12px 0 0;
+      color: #766477;
+      font-size: .92rem;
+      line-height: 1.45;
+    }
+    .read-wrap { margin-top: 16px; }
+    .music-card {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid rgba(200, 94, 123, .16);
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255, 245, 247, .96), rgba(242, 239, 255, .96));
+      box-shadow: 0 10px 28px rgba(92, 61, 83, .09);
+    }
+    .music-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    .record {
+      position: relative;
+      flex: 0 0 112px;
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      border: 4px solid #211b26;
+      border-radius: 50%;
+      background: repeating-radial-gradient(circle, #17131b 0 3px, #28222c 4px 5px, #17131b 6px 8px);
+      box-shadow: 0 8px 18px rgba(46, 31, 49, .28);
+    }
+    .record::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #eee7ed;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, .2);
+    }
+    .record.is-playing { animation: spin-record 2.8s linear infinite; }
+    @keyframes spin-record { to { transform: rotate(360deg); } }
+    .record-label {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-content: center;
+      border: 2px solid #fff0f3;
+      border-radius: 50%;
+      color: #fff;
+      background: #c85e7b;
+      font-size: .7rem;
+      font-weight: 800;
+      line-height: 1.05;
+      text-align: center;
+    }
+    .music-copy { min-width: 0; }
+    .music-title {
+      margin: 0 0 4px;
+      color: var(--rose);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+    .music-artist { margin: 0 0 9px; color: #776b7b; font-size: .9rem; }
+    .music-status { min-height: 1.25em; margin: 12px 0 0; color: #766477; font-size: .82rem; }
+    .music-toggle {
+      padding: 9px 14px;
+      background: #967da2;
+      font-size: .86rem;
+    }
+    .track-list { display: grid; gap: 8px; margin-top: 14px; }
+    .track-choice {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1px solid rgba(200, 94, 123, .22);
+      color: #5e5263;
+      background: rgba(255, 255, 255, .74);
+      box-shadow: none;
+      text-align: left;
+      font-size: .9rem;
+    }
+    .track-choice:hover {
+      transform: translateY(-1px);
+      color: #493a50;
+      background: #fff;
+      box-shadow: none;
+    }
+    .track-choice[aria-pressed="true"] {
+      border-color: #c85e7b;
+      background: #fff0f3;
+      color: #853b57;
+    }
+    .music-footnote { margin: 10px 0 0; color: #8d8190; font-size: .76rem; }
+    @media (max-width: 390px) {
+      .music-top { gap: 13px; }
+      .record { flex-basis: 92px; width: 92px; height: 92px; }
+      .record-label { width: 38px; height: 38px; }
+    }    .gallery-wrap {
+      margin: 20px auto 0;
+      padding: 18px 14px 14px;
+      border-radius: 24px;
+      box-shadow: 0 14px 40px rgba(92, 61, 83, .10);
+    }
+    .gallery-title {
+      display: inline-block;
+      margin: 0 0 4px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      color: var(--rose);
+      background: #fff0f3;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      transform: rotate(-2deg);
+    }
+    .gallery-subtitle {
+      margin: 4px 0 0;
+      color: #8d8190;
+      font-size: .82rem;
+    }
+    .collage {
+      position: relative;
+      height: 410px;
+      margin: 7px auto 0;
+    }
+    .photo {
+      position: absolute;
+      margin: 0;
+      padding: 5px;
+      overflow: hidden;
+      border: 1px solid rgba(90, 62, 80, .12);
+      border-radius: 13px;
+      background: white;
+      box-shadow: 0 10px 22px rgba(60, 40, 58, .22);
+    }
+    .photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .photo-bunny {
+      top: 12px;
+      left: 1%;
+      width: 39%;
+      height: 165px;
+      transform: rotate(-7deg);
+      z-index: 2;
+    }
+    .photo-portrait {
+      top: 3px;
+      right: 3%;
+      width: 40%;
+      height: 125px;
+      transform: rotate(6deg);
+      z-index: 1;
+    }
+    .photo-manga {
+      top: 128px;
+      left: 32%;
+      width: 37%;
+      height: 210px;
+      transform: rotate(-2deg);
+      z-index: 5;
+    }
+    .photo-manga img { object-fit: contain; background: #f95a3d; }
+    .photo-anime {
+      top: 224px;
+      left: 0;
+      width: 40%;
+      height: 145px;
+      transform: rotate(5deg);
+      z-index: 3;
+    }
+    .photo-shrek {
+      top: 266px;
+      right: 0;
+      width: 39%;
+      height: 125px;
+      transform: rotate(-5deg);
+      z-index: 4;
+    }
+    .photo-dragon {
+      top: 60px;
+      right: 1%;
+      width: 39%;
+      height: 175px;
+      transform: rotate(7deg);
+      z-index: 6;
+    }
+    .photo-pointing {
+      top: 8px;
+      right: 1%;
+      width: 37%;
+      height: 120px;
+      transform: rotate(6deg);
+      z-index: 8;
+    }
+    .photo-clown {
+      top: 24%;
+      left: 4%;
+      width: 35%;
+      height: 120px;
+      transform: rotate(-7deg);
+      z-index: 7;
+    }
+    .photo-rocket {
+      top: 45%;
+      left: 2%;
+      width: 40%;
+      height: 130px;
+      transform: rotate(-5deg);
+      z-index: 8;
+    }
+.sticker {
+      position: absolute;
+      z-index: 7;
+      color: #c85e7b;
+      text-shadow: 0 2px 0 white, 1px 3px 5px rgba(65, 38, 62, .25);
+      pointer-events: none;
+    }
+    .sticker-one { top: 178px; left: 17%; font-size: 27px; transform: rotate(-15deg); }
+    .sticker-two { right: 16%; bottom: 15px; font-size: 24px; transform: rotate(12deg); }
+    .footer {
+      margin: 18px 0 0;
+      color: #8d8190;
+      font-size: .82rem;
+    }
+    @media (max-width: 390px) {
+      .collage { height: 365px; }
+      .photo-bunny { height: 145px; }
+      .photo-portrait { height: 110px; }
+      .photo-manga { top: 115px; height: 190px; }
+      .photo-anime { top: 202px; height: 130px; }
+      .photo-shrek { top: 235px; height: 115px; }
+      .photo-dragon { top: 52px; height: 155px; }
+    }
+    @media (min-width: 841px) {
+      .gallery-wrap { display: none; }
+    }
+    @media (max-width: 840px) {
+      .side-gallery { display: none; }
+    }    .celebration-overlay[hidden] { display: none; }
+    .celebration-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 218, 232, .94), transparent 42%),
+        radial-gradient(circle at 80% 82%, rgba(223, 214, 255, .94), transparent 45%),
+        rgba(255, 248, 246, .96);
+      backdrop-filter: blur(8px);
+    }
+    .celebration-card {
+      position: relative;
+      z-index: 3;
+      width: min(100%, 470px);
+      padding: clamp(28px, 7vw, 48px) 24px;
+      border: 2px solid rgba(255, 255, 255, .95);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, .9);
+      box-shadow: 0 25px 80px rgba(96, 53, 90, .22);
+      animation: celebration-pop .72s cubic-bezier(.18, .9, .28, 1.25) both;
+    }
+    @keyframes celebration-pop {
+      from { opacity: 0; transform: scale(.55) rotate(-7deg); }
+      to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+    .celebration-heart {
+      display: block;
+      margin: 0 auto 8px;
+      font-size: 50px;
+      animation: heart-party .75s ease-in-out infinite alternate;
+    }
+    @keyframes heart-party {
+      from { transform: scale(.88) rotate(-8deg); }
+      to { transform: scale(1.12) rotate(8deg); }
+    }
+    .celebration-title {
+      margin: 0 0 12px;
+      color: #b94f6d;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 700;
+    }
+    .celebration-copy {
+      margin: 0 auto 22px;
+      color: #6f6075;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .dance-gallery {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .dance-photo {
+      position: absolute;
+      width: var(--dance-width, 120px);
+      height: var(--dance-height, 120px);
+      margin: 0;
+      overflow: visible;
+      transform-origin: center center;
+      animation: dance-bop var(--dance-speed, .8s) ease-in-out var(--dance-delay, 0s) infinite alternate;
+    }
+    .dance-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 4px solid white;
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(36, 22, 42, .3);
+    }
+    .dance-photo::before {
+      content: "";
+      position: absolute;
+      top: calc(0px - var(--hat-height, 20px) + 3px);
+      left: 50%;
+      z-index: 2;
+      width: 0;
+      height: 0;
+      border-left: var(--hat-half, 9px) solid transparent;
+      border-right: var(--hat-half, 9px) solid transparent;
+      border-bottom: var(--hat-height, 20px) solid var(--hat-color, #f2b84b);
+      filter: drop-shadow(0 2px 1px rgba(50, 30, 45, .2));
+      transform: translateX(-50%) rotate(-5deg);
+    }
+    .dance-photo::after {
+      content: "";
+      position: absolute;
+      top: calc(0px - var(--hat-height, 20px) - var(--hat-pom-size, 7px) + 7px);
+      left: calc(50% - var(--hat-pom-size, 7px) / 2);
+      z-index: 3;
+      width: var(--hat-pom-size, 7px);
+      height: var(--hat-pom-size, 7px);
+      border-radius: 50%;
+      background: var(--hat-pom, #ef768f);
+    }
+    .dance-photo:nth-child(2n) { --hat-color: #8ba7e0; --hat-pom: #f2b84b; }
+    .dance-photo:nth-child(3n) { --hat-color: #78b9a7; --hat-pom: #e783a0; }
+    .dance-photo:nth-child(4n) { --hat-color: #f47b62; --hat-pom: #8ba7e0; }
+    .dance-photo:nth-child(5n) { --hat-color: #a78bc0; --hat-pom: #f2b84b; }
+    @keyframes dance-bop {
+      from { transform: translateY(7px) rotate(-10deg) scale(.96); }
+      to { transform: translateY(-12px) rotate(10deg) scale(1.04); }
+    }    .celebration-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .party-again { background: #c85e7b; }
+    .celebration-close { background: #92799e; }
+    .confetti-field {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .confetti-piece {
+      position: absolute;
+      top: -40px;
+      opacity: 0;
+      animation: confetti-rain var(--duration, 3.2s) cubic-bezier(.2, .6, .3, 1) var(--delay, 0s) forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes confetti-rain {
+      0% { opacity: 1; transform: translate3d(0, -5vh, 0) rotate(0deg) scale(.7); }
+      12% { opacity: 1; }
+      100% { opacity: 0; transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(var(--spin, 720deg)) scale(1.2); }
+    }
+    .corner-party {
+      position: absolute;
+      z-index: 2;
+      width: clamp(86px, 13vw, 170px);
+      height: clamp(86px, 13vw, 170px);
+      margin: 0;
+      padding: 4px;
+      overflow: visible;
+      border: 1px solid rgba(90, 62, 80, .18);
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 12px 26px rgba(36, 22, 42, .28);
+      transform-origin: center;
+      animation: dance-bop .7s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .corner-party img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+    }
+    .corner-party::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      z-index: 3;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 24px solid var(--corner-hat, #f2b84b);
+      filter: drop-shadow(0 2px 1px rgba(50, 30, 45, .2));
+      transform: translateX(-50%) rotate(-7deg);
+    }
+    .corner-party::after {
+      content: "";
+      position: absolute;
+      top: -22px;
+      left: calc(50% - 4px);
+      z-index: 4;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--corner-pom, #ef768f);
+    }
+    .corner-top-left { top: 16px; left: 16px; transform: rotate(-7deg); --corner-hat: #f2b84b; --corner-pom: #e783a0; }
+    .corner-top-right { top: 16px; right: 16px; transform: rotate(7deg); animation-delay: -.22s; --corner-hat: #8ba7e0; --corner-pom: #f47b62; }
+    .corner-bottom-left { bottom: 16px; left: 16px; transform: rotate(6deg); animation-delay: -.4s; --corner-hat: #78b9a7; --corner-pom: #a78bc0; }
+    .corner-bottom-right { bottom: 16px; right: 16px; transform: rotate(-6deg); animation-delay: -.12s; --corner-hat: #f47b62; --corner-pom: #8ba7e0; }
+    .corner-top-left img { object-position: center 30%; }
+    @media (max-width: 600px) {
+      .corner-party {
+        width: clamp(70px, 20vw, 105px);
+        height: clamp(70px, 20vw, 105px);
+        border-radius: 14px;
+      }
+      .corner-party img { border-radius: 10px; }
+      .corner-top-left { top: 10px; left: 8px; }
+      .corner-top-right { top: 10px; right: 8px; }
+      .corner-bottom-left { bottom: 10px; left: 8px; }
+      .corner-bottom-right { bottom: 10px; right: 8px; }
+    }    .edge-party {
+      position: absolute;
+      z-index: 2;
+      width: clamp(86px, 11vw, 140px);
+      height: clamp(86px, 11vw, 140px);
+      pointer-events: none;
+    }
+    .edge-party .corner-party {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: 100%;
+      animation: dance-bop .66s ease-in-out infinite alternate;
+    }
+    .edge-top { top: 18px; left: 50%; transform: translateX(-50%); }
+    .edge-right { top: 50%; right: 18px; transform: translateY(-50%); }
+    .edge-bottom { bottom: 18px; left: 50%; transform: translateX(-50%); }
+    .edge-left { top: 50%; left: 18px; transform: translateY(-50%); }
+    .edge-right .corner-party { animation-delay: -.22s; }
+    .edge-bottom .corner-party { animation-delay: -.4s; }
+    .edge-left .corner-party { animation-delay: -.12s; }
+    @media (max-width: 600px) {
+      .edge-party { width: 76px; height: 76px; }
+      .edge-top { top: 10px; }
+      .edge-right { right: 8px; }
+      .edge-bottom { bottom: 10px; }
+      .edge-left { left: 8px; }
+    }    .celebration-popper {
+      position: absolute;
+      z-index: 4;
+      bottom: 5vh;
+      font-size: clamp(48px, 9vw, 86px);
+      animation: popper-launch 1s cubic-bezier(.2, .7, .3, 1) both;
+      pointer-events: none;
+    }
+    .popper-left { left: 3vw; transform-origin: bottom left; }
+    .popper-right { right: 3vw; transform-origin: bottom right; animation-delay: .12s; }
+    @keyframes popper-launch {
+      0% { opacity: 0; transform: scale(.2) rotate(-35deg) translateY(50px); }
+      55% { opacity: 1; transform: scale(1.2) rotate(12deg) translateY(-15px); }
+      100% { opacity: 1; transform: scale(1) rotate(0) translateY(0); }
+    }
+    .no-flash {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 900;
+      width: clamp(170px, 30vw, 330px);
+      aspect-ratio: 1;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .no-flash img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 5px solid white;
+      border-radius: 24px;
+      box-shadow: 0 20px 55px rgba(48, 29, 51, .35);
+    }
+    .no-flash.show {
+      visibility: visible;
+      animation: no-image-flash .9s ease-out forwards;
+    }
+    @keyframes no-image-flash {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(.55) rotate(-12deg); }
+      16% { opacity: 1; transform: translate(-50%, -50%) scale(1.06) rotate(4deg); }
+      62% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(.78) rotate(8deg); }
+    }    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <span class="sparkle s1" aria-hidden="true">♡</span>
+  <span class="sparkle s2" aria-hidden="true">✦</span>
+  <span class="sparkle s3" aria-hidden="true">♡</span>
+  <span class="sparkle s4" aria-hidden="true">✧</span>
+
+  <aside class="side-gallery side-gallery-left" aria-hidden="true">
+    <figure class="side-photo side-bunny"><img src="images/bunny-art.png" alt=""></figure>
+    <figure class="side-photo side-anime"><img src="images/anime-frame.png" alt=""></figure>
+    <figure class="side-photo side-manga"><img src="images/manga-cover.png" alt=""></figure>
+    <figure class="side-photo side-pointing"><img src="images/pointing-man.png" alt=""></figure>
+    <figure class="side-photo side-clown"><img src="images/clown-lollipop.png" alt=""></figure>
+    
+  </aside>
+  <aside class="side-gallery side-gallery-right" aria-hidden="true">
+    <figure class="side-photo side-portrait"><img src="images/portrait.png" alt=""></figure>
+    <figure class="side-photo side-dragon"><img src="images/dragon-prince.png" alt=""></figure>
+    <figure class="side-photo side-shrek"><img src="images/shrek-and-fiona.png" alt=""></figure>
+    <figure class="side-photo side-rocket"><img src="images/rocket-and-groot.png" alt=""></figure>
+  </aside>
+  <main>
+    <p class="eyebrow">a little note, just for you</p>
+    <h1>Hey, Vlair Ashlee ♡</h1>
+    <section class="card" aria-label="Apology note">
+      <div class="heart" aria-hidden="true">♡</div>
+      <p class="intro">Jus this one time hear me out jus one time read my notee plz plz plz and then answer the question</p>
+
+      <div class="forgive" aria-labelledby="forgive-title">
+        <h2 id="forgive-title">Will u forgive me plzzz?</h2>
+        <div class="choices">
+          <button class="yes-button" id="yes-button" type="button">Yes ♡</button>
+          <button class="no-button" id="no-button" type="button" aria-label="No">No</button>
+        </div>
+        <p class="response" id="response" aria-live="polite"></p>
+      </div>
+
+      <div class="read-wrap">
+        <button class="read-button" id="open-note" type="button" aria-expanded="false" aria-controls="note">Read my note 💌</button>
+      </div>
+      <div class="note" id="note">
+        <div class="note-inner">
+          <p>I am very Sorry i promise i wont upset u again plz plz plz I know i was being annoing but i promise that was jus a phase I really really love talking to u</p>
+          <p>plz forgive me once i am a changed man (not really but plz get the point ) i really like ur spotify playlist(u got me into jeff buckley) , movie taste (ill watch horror movies with u ),i love playing rivals with u(even tho we have 40 percent tgother), ill vc for u(but i really dont speak much ), i love how straightforward u are</p>
+          <p>plz forgive me bro ik i said i give up easily but sometimes i like to try coz i nvr try to change things inn my realtionships idk why i am trying now idk i jus wanted to ig anyways if u never reply ill know ur answer and wont bother u ever again</p>
+          <p class="signoff">~ Azidron</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="music-card" aria-labelledby="music-title">
+      <div class="music-top">
+        <div class="record" id="record" aria-hidden="true"><span class="record-label">♡<br>AG</span></div>
+        <div class="music-copy">
+          <h2 class="music-title" id="music-title">A little song for you ♡</h2>
+          <p class="music-artist" id="current-track">Let’s Stay Together · Al Green</p>
+          <button class="music-toggle" id="music-toggle" type="button">Play song ♡</button>
+        </div>
+      </div>
+      <p class="music-status" id="music-status" aria-live="polite">Trying to start the song…</p>
+      <div class="track-list" role="group" aria-label="Choose a song">
+        <button class="track-choice" type="button" data-track="0" aria-pressed="true">♫ Let’s Stay Together — Al Green</button>
+        <button class="track-choice" type="button" data-track="1" aria-pressed="false">♫ Lover, You Should Come Over — Jeff Buckley</button>
+      </div>
+      <audio id="audio-player" preload="auto" autoplay></audio>
+    </section>    <section class="gallery-wrap" aria-labelledby="gallery-title">
+      <h2 class="gallery-title" id="gallery-title">little things for you ♡</h2>
+      <p class="gallery-subtitle">a completely normal amount of pictures</p>
+      <div class="collage">
+        <figure class="photo photo-bunny"><img src="images/bunny-art.png" alt="A hand-drawn portrait with bunny ears" loading="lazy"></figure>
+        <figure class="photo photo-portrait"><img src="images/portrait.png" alt="A smiling man outdoors" loading="lazy"></figure>
+        <figure class="photo photo-manga"><img src="images/manga-cover.png" alt="A colorful Chainsaw Man manga cover" loading="lazy"></figure>
+        <figure class="photo photo-anime"><img src="images/anime-frame.png" alt="An anime character in an orange sweater" loading="lazy"></figure>
+        <figure class="photo photo-shrek"><img src="images/shrek-and-fiona.png" alt="Shrek and Fiona holding hands" loading="lazy"></figure>
+        <figure class="photo photo-dragon"><img src="images/dragon-prince.png" alt="A white-haired fantasy prince with a dragon behind him" loading="lazy"></figure>
+        <figure class="photo photo-pointing"><img src="images/pointing-man.png" alt="An older man pointing toward the viewer" loading="lazy"></figure>
+        <figure class="photo photo-clown"><img src="images/clown-lollipop.png" alt="A clown holding a colorful lollipop" loading="lazy"></figure>
+        <figure class="photo photo-rocket"><img src="images/rocket-and-groot.png" alt="Rocket Raccoon and Groot" loading="lazy"></figure>
+        
+        <span class="sticker sticker-one" aria-hidden="true">♡</span>
+        <span class="sticker sticker-two" aria-hidden="true">✦</span>
+      </div>
+    </section>
+  </main>
+  <audio id="no-sound" src="audio/sad-meow-song.mp3" preload="auto"></audio>
+  <audio id="yes-sound" src="audio/yippie.mp3" preload="auto"></audio>
+  <audio id="celebration-audio" src="audio/confetti-party.mp3" preload="auto"></audio>
+  <div class="no-flash" id="no-flash" aria-hidden="true"><img src="images/no-reaction.png" alt=""></div>
+  <div class="celebration-overlay" id="celebration" hidden>
+    <div class="confetti-field" id="confetti-field" aria-hidden="true"></div>
+      <div class="dance-gallery" aria-label="Dancing pictures wearing party hats">
+        <figure class="dance-photo"><img src="images/bunny-art.png" alt="Bunny-eared portrait wearing a party hat" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/portrait.png" alt="Smiling man wearing a party hat" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/manga-cover.png" alt="Manga cover wearing a party hat" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/anime-frame.png" alt="Anime character wearing a party hat" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/shrek-and-fiona.png" alt="Shrek and Fiona wearing party hats" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/dragon-prince.png" alt="Fantasy prince wearing a party hat" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/pointing-man.png" alt="Pointing man wearing a party hat" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/rocket-and-groot.png" alt="Rocket and Groot wearing party hats" loading="lazy"></figure>
+        <figure class="dance-photo"><img src="images/clown-lollipop.png" alt="Clown wearing a party hat" loading="lazy"></figure>
+        
+      </div>
+    <span class="celebration-popper popper-left" aria-hidden="true">🎉</span>
+    <span class="celebration-popper popper-right" aria-hidden="true">🎊</span>
+    <figure class="corner-party corner-top-left"><img src="images/money-meme.png" alt="A celebratory meme in the top left corner"></figure>
+    <figure class="corner-party corner-top-right"><img src="images/laughing-meme.png" alt="A laughing meme in the top right corner"></figure>
+    <figure class="corner-party corner-bottom-left"><img src="images/propeller-hat-meme.png" alt="A propeller hat meme in the bottom left corner"></figure>
+    <figure class="corner-party corner-bottom-right"><img src="images/wide-eyed-meme.png" alt="A wide-eyed meme in the bottom right corner"></figure>    <div class="edge-party edge-top"><figure class="corner-party"><img src="images/hat-meme.png" alt="Party hat meme at the top edge"></figure></div>
+    <div class="edge-party edge-right"><figure class="corner-party"><img src="images/food-meme.png" alt="Meme at the right edge"></figure></div>
+    <div class="edge-party edge-bottom"><figure class="corner-party"><img src="images/graduation-meme.png" alt="Graduation meme at the bottom edge"></figure></div>
+    <div class="edge-party edge-left"><figure class="corner-party"><img src="images/double-meme.png" alt="Two meme characters at the left edge"></figure></div>    <section class="celebration-card" role="dialog" aria-modal="true" aria-labelledby="celebration-title">
+      <span class="celebration-heart" aria-hidden="true">💖</span>
+      <h2 class="celebration-title" id="celebration-title">YAYYYY!!</h2>
+      <p class="celebration-copy">Thank you for hearing me out! This calls for a tiny internet party 🎉✨</p>
+      <div class="celebration-actions">
+        <button class="party-again" id="party-again" type="button">More confetti! 🎊</button>
+        <button class="celebration-close" id="celebration-close" type="button">Back to my note</button>
+      </div>
+    </section>
+  </div>
+  <script>
+    const openButton = document.getElementById("open-note");
+    const note = document.getElementById("note");
+    openButton.addEventListener("click", () => {
+      const isOpen = note.classList.toggle("open");
+      openButton.setAttribute("aria-expanded", String(isOpen));
+      openButton.textContent = isOpen ? "Hide my note" : "Read my note 💌";
+    });
+
+    const yesButton = document.getElementById("yes-button");
+    const yesSound = document.getElementById("yes-sound");
+    const noButton = document.getElementById("no-button");
+    const noSound = document.getElementById("no-sound");
+    const noFlash = document.getElementById("no-flash");
+    noFlash.addEventListener("animationend", function (event) {
+      if (event.animationName === "no-image-flash") {
+        noSound.pause();
+        noSound.currentTime = 0;
+      }
+    });
+    const response = document.getElementById("response");
+    yesButton.addEventListener("click", () => {
+      yesSound.currentTime = 0;
+      const yesSoundAttempt = yesSound.play();
+      if (yesSoundAttempt && typeof yesSoundAttempt.catch === "function") yesSoundAttempt.catch(function () {});
+      response.textContent = "Yay, thank you! I still want to listen whenever you're ready ♡";
+      showCelebration();
+    });
+
+    function flashNoImage() {
+      const flash = document.getElementById("no-flash");
+      flash.classList.remove("show");
+      void flash.offsetWidth;
+      flash.classList.add("show");
+    }
+    let noClicks = 0;
+    const noMessages = [
+      "The No button has entered its parkour era 🏃",
+      "It filed a change-of-address form 📦",
+      "Tiny-button cardio is going great 🏋️",
+      "It is now hiding in plain sight 🥸",
+      "Achievement unlocked: professional dodger 🏆",
+      "No says: please stop making me exercise 😵",
+      "Okay, it heard you. No still counts; take your time ♡"
+    ];
+    function playNoSound() {
+      noSound.currentTime = 0;
+      const soundAttempt = noSound.play();
+      if (soundAttempt && typeof soundAttempt.catch === "function") soundAttempt.catch(function () {});
+    }
+    noButton.addEventListener("click", () => {
+      flashNoImage();
+      playNoSound();
+      noClicks += 1;
+      const current = Number(noButton.dataset.scale || "1");
+      const smaller = Math.max(.62, current * .82);
+      noButton.dataset.scale = String(smaller);
+      noButton.style.setProperty("--shrink", String(smaller));
+
+      const choices = document.querySelector(".choices");
+      const maxLeft = Math.max(0, choices.clientWidth - noButton.offsetWidth);
+      const maxTop = Math.max(0, choices.clientHeight - noButton.offsetHeight);
+      const yesLeft = yesButton.offsetLeft;
+      const yesRight = yesLeft + yesButton.offsetWidth;
+      const yesTop = yesButton.offsetTop;
+      const yesBottom = yesTop + yesButton.offsetHeight;
+      let nextLeft = noButton.offsetLeft;
+      let nextTop = noButton.offsetTop;
+
+      for (let attempt = 0; attempt < 40; attempt += 1) {
+        const candidateLeft = Math.random() * maxLeft;
+        const candidateTop = Math.random() * maxTop;
+        const safelyAway =
+          candidateLeft + noButton.offsetWidth < yesLeft - 10 ||
+          candidateLeft > yesRight + 10 ||
+          candidateTop + noButton.offsetHeight < yesTop - 10 ||
+          candidateTop > yesBottom + 10;
+        if (safelyAway) {
+          nextLeft = candidateLeft;
+          nextTop = candidateTop;
+          break;
+        }
+      }
+
+      noButton.style.left = nextLeft + "px";
+      noButton.style.top = nextTop + "px";
+      noButton.classList.remove("wiggle");
+      void noButton.offsetWidth;
+      noButton.classList.add("wiggle");
+      const messageIndex = Math.min(noClicks - 1, noMessages.length - 1);
+      response.textContent = noMessages[messageIndex];
+    });
+    const tracks = [
+      { title: "Let's Stay Together", artist: "Al Green", src: "audio/lets-stay-together-al-green.mp3" },
+      { title: "Lover, You Should Come Over", artist: "Jeff Buckley", src: "audio/lover-you-should-come-over-jeff-buckley.mp3" }
+    ];
+    const audioPlayer = document.getElementById("audio-player");
+    audioPlayer.autoplay = true;
+    const record = document.getElementById("record");
+    const musicToggle = document.getElementById("music-toggle");
+    const musicStatus = document.getElementById("music-status");
+    const currentTrackLabel = document.getElementById("current-track");
+    const trackButtons = Array.from(document.querySelectorAll(".track-choice"));
+    let currentTrackIndex = 0;
+
+    function selectTrack(index, startNow) {
+      currentTrackIndex = index;
+      audioPlayer.pause();
+      audioPlayer.src = tracks[index].src;
+      audioPlayer.load();
+      currentTrackLabel.textContent = tracks[index].title + " · " + tracks[index].artist;
+      trackButtons.forEach(function (button) {
+        button.setAttribute("aria-pressed", String(Number(button.dataset.track) === index));
+      });
+      if (startNow) startTrack();
+      else musicStatus.textContent = "Selected — press play when you're ready ♡";
+    }
+
+    function startTrack() {
+      const attempt = audioPlayer.play();
+      if (attempt && typeof attempt.catch === "function") {
+        attempt.catch(function () {
+          musicStatus.textContent = "Autoplay was blocked — tap Play song ♡.";
+        });
+      }
+    }
+
+    musicToggle.addEventListener("click", function () {
+      if (audioPlayer.paused) startTrack();
+      else audioPlayer.pause();
+    });
+
+    trackButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        selectTrack(Number(button.dataset.track), true);
+      });
+    });
+
+    audioPlayer.addEventListener("play", function () {
+      record.classList.add("is-playing");
+      musicToggle.textContent = "Pause song ⏸";
+      musicStatus.textContent = "Now playing ♫";
+    });
+    audioPlayer.addEventListener("pause", function () {
+      record.classList.remove("is-playing");
+      musicToggle.textContent = "Play song ♡";
+    });
+    audioPlayer.addEventListener("ended", function () {
+      selectTrack((currentTrackIndex + 1) % tracks.length, true);
+    });
+    audioPlayer.addEventListener("error", function () {
+      musicStatus.textContent = "Couldn't load the song. Keep the audio folder beside this page.";
+    });
+
+    selectTrack(0, false);
+    startTrack();
+    window.addEventListener("load", startTrack);
+    const celebration = document.getElementById("celebration");
+    const celebrationAudio = document.getElementById("celebration-audio");
+    const confettiField = document.getElementById("confetti-field");
+    const celebrationClose = document.getElementById("celebration-close");
+    const partyAgain = document.getElementById("party-again");
+    const confettiSymbols = ["✦", "♡", "♥", "●", "✿", "🎉", "🎊", "✨"];
+    const confettiColors = ["#e783a0", "#a78bc0", "#f2b84b", "#78b9a7", "#f47b62", "#8ba7e0"];
+
+    const dancePhotos = Array.from(document.querySelectorAll(".dance-photo"));
+
+    function arrangeDancers() {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      dancePhotos.forEach(function (photo) {
+        const minSize = Math.min(95, Math.max(60, screenWidth * .075));
+        const maxSize = Math.max(minSize + 1, Math.min(360, screenWidth * .28, screenHeight * .4));
+        const width = minSize + Math.random() * (maxSize - minSize);
+        const height = width * (.72 + Math.random() * .48);
+        photo.style.setProperty("--dance-width", width + "px");
+        photo.style.setProperty("--dance-height", height + "px");
+        photo.style.left = Math.random() * Math.max(0, screenWidth - width) + "px";
+        photo.style.top = Math.random() * Math.max(0, screenHeight - height) + "px";
+        photo.style.setProperty("--dance-speed", (.48 + Math.random() * .8) + "s");
+        photo.style.setProperty("--dance-delay", (-Math.random() * .9) + "s");
+        photo.style.setProperty("--hat-half", Math.max(7, width * .045) + "px");
+        photo.style.setProperty("--hat-height", Math.max(16, width * .12) + "px");
+        photo.style.setProperty("--hat-pom-size", Math.max(6, width * .035) + "px");
+      });
+    }    function throwConfetti() {
+      confettiField.innerHTML = "";
+      for (let i = 0; i < 110; i += 1) {
+        const piece = document.createElement("span");
+        piece.className = "confetti-piece";
+        piece.textContent = confettiSymbols[Math.floor(Math.random() * confettiSymbols.length)];
+        piece.style.left = Math.random() * 100 + "%";
+        piece.style.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        piece.style.fontSize = (14 + Math.random() * 24) + "px";
+        piece.style.setProperty("--drift", (Math.random() * 260 - 130) + "px");
+        piece.style.setProperty("--spin", (360 + Math.random() * 1440) + "deg");
+        piece.style.setProperty("--duration", (2.8 + Math.random() * 2.8) + "s");
+        piece.style.setProperty("--delay", (Math.random() * .8) + "s");
+        confettiField.appendChild(piece);
+        piece.addEventListener("animationend", function () { piece.remove(); }, { once: true });
+      }
+    }
+
+    function showCelebration() {
+      celebrationAudio.currentTime = 0;
+      const celebrationAttempt = celebrationAudio.play();
+      if (celebrationAttempt && typeof celebrationAttempt.catch === "function") celebrationAttempt.catch(function () {});
+      celebration.hidden = false;
+      document.body.style.overflow = "hidden";
+      throwConfetti();
+      celebrationClose.focus();
+    }
+
+    function hideCelebration() {
+      celebrationAudio.pause();
+      celebrationAudio.currentTime = 0;
+      celebration.hidden = true;
+      document.body.style.overflow = "";
+      confettiField.innerHTML = "";
+      yesButton.focus();
+    }
+
+    partyAgain.addEventListener("click", function () {
+      arrangeDancers();
+      throwConfetti();
+    });
+    celebrationClose.addEventListener("click", hideCelebration);
+    window.addEventListener("resize", function () {
+      if (!celebration.hidden) arrangeDancers();
+    });
+    celebration.addEventListener("click", function (event) {
+      if (event.target === celebration) hideCelebration();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !celebration.hidden) hideCelebration();
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
